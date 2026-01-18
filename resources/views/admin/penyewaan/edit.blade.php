@@ -3,30 +3,30 @@
 @section('content')
 <div class="container-fluid">
 
-    <!-- Page Title -->
-    <div class="py-3 py-lg-4">
-        <div class="row">
-            <div class="col-lg-6">
-                <h4 class="page-title mb-0">Edit Penyewaan</h4>
-            </div>
-            <div class="col-lg-6">
-                <ol class="breadcrumb m-0 float-end">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('admin.penyewaan.index') }}">Penyewaan</a>
-                    </li>
-                    <li class="breadcrumb-item active">Edit</li>
-                </ol>
-            </div>
+    {{-- Header --}}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold mb-1">Perbarui Data Penyewaan</h3>
+            <p class="text-muted mb-0">Kelola informasi transaksi sewa kendaraan</p>
         </div>
+        <nav>
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('admin.penyewaan.index') }}">Transaksi</a>
+                </li>
+                <li class="breadcrumb-item active">Edit Data</li>
+            </ol>
+        </nav>
     </div>
 
-    <div class="card">
+    <div class="card shadow-sm border-0">
         <div class="card-body">
 
-            {{-- Error --}}
+            {{-- Alert Error --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
-                    <ul class="mb-0">
+                    <strong>Terjadi kesalahan:</strong>
+                    <ul class="mb-0 mt-1">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -34,75 +34,30 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.penyewaan.update', $penyewaan->id) }}"
-                  method="POST"
-                  class="form-horizontal">
+            <form action="{{ route('admin.penyewaan.update', $penyewaan->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
-                {{-- Kendaraan --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Kendaraan</label>
-                    <div class="col-md-10">
-                        <select name="kendaraan_id"
-                                id="kendaraan_id"
-                                class="form-control"
-                                required>
+                <div class="row g-3">
+
+                    {{-- Kendaraan --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Pilih Kendaraan</label>
+                        <select name="kendaraan_id" id="kendaraan_id" class="form-select" required>
                             @foreach ($kendaraans as $kendaraan)
                                 <option value="{{ $kendaraan->id }}"
                                     data-harga="{{ $kendaraan->harga }}"
                                     {{ $penyewaan->kendaraan_id == $kendaraan->id ? 'selected' : '' }}>
-                                    {{ $kendaraan->merk }}
-                                    ({{ $kendaraan->status }})
+                                    {{ $kendaraan->merk }} — {{ ucfirst($kendaraan->status) }}
                                 </option>
                             @endforeach
                         </select>
-                        <small class="text-muted">
-                            Mengganti kendaraan akan mengubah status kendaraan lama & baru
-                        </small>
+                        <small class="text-muted">Perubahan kendaraan akan menyesuaikan status</small>
                     </div>
-                </div>
 
-                {{-- Nama --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Nama Penyewa</label>
-                    <div class="col-md-10">
-                        <input type="text"
-                               name="nama_penyewa"
-                               class="form-control"
-                               value="{{ old('nama_penyewa', $penyewaan->nama_penyewa) }}"
-                               required>
-                    </div>
-                </div>
-
-                {{-- NIK --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">NIK</label>
-                    <div class="col-md-10">
-                        <input type="text"
-                               name="nik"
-                               maxlength="16"
-                               class="form-control"
-                               value="{{ old('nik', $penyewaan->nik) }}"
-                               required>
-                    </div>
-                </div>
-
-                {{-- Alamat --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Alamat</label>
-                    <div class="col-md-10">
-                        <textarea name="alamat"
-                                  class="form-control"
-                                  rows="3"
-                                  required>{{ old('alamat', $penyewaan->alamat) }}</textarea>
-                    </div>
-                </div>
-
-                {{-- Durasi --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Durasi (Hari)</label>
-                    <div class="col-md-10">
+                    {{-- Durasi --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Lama Sewa (Hari)</label>
                         <input type="number"
                                name="durasi_sewa"
                                id="durasi_sewa"
@@ -112,70 +67,79 @@
                                value="{{ old('durasi_sewa', $penyewaan->durasi_sewa) }}"
                                required>
                     </div>
-                </div>
 
-                {{-- Estimasi Total (display only) --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Estimasi Total</label>
-                    <div class="col-md-10">
+                    {{-- Nama --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Nama Lengkap Penyewa</label>
+                        <input type="text"
+                               name="nama_penyewa"
+                               class="form-control"
+                               value="{{ old('nama_penyewa', $penyewaan->nama_penyewa) }}"
+                               required>
+                    </div>
+
+                    {{-- NIK --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Nomor Identitas (NIK)</label>
+                        <input type="text"
+                               name="nik"
+                               maxlength="16"
+                               class="form-control"
+                               value="{{ old('nik', $penyewaan->nik) }}"
+                               required>
+                    </div>
+
+                    {{-- Alamat --}}
+                    <div class="col-md-12">
+                        <label class="form-label">Alamat Lengkap</label>
+                        <textarea name="alamat"
+                                  rows="3"
+                                  class="form-control"
+                                  required>{{ old('alamat', $penyewaan->alamat) }}</textarea>
+                    </div>
+
+                    {{-- Estimasi --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Perkiraan Biaya</label>
                         <input type="text"
                                id="total_harga"
-                               class="form-control"
-                               value="Rp {{ number_format($penyewaan->total_harga,0,',','.') }}"
-                               readonly>
+                               class="form-control bg-light"
+                               readonly
+                               value="Rp {{ number_format($penyewaan->total_harga,0,',','.') }}">
                     </div>
-                </div>
 
-                {{-- Metode Pembayaran --}}
-                <div class="mb-2 row">
-                    <label class="col-md-2 col-form-label">Metode Pembayaran</label>
-                    <div class="col-md-10">
-                        <select name="metode_pembayaran" class="form-control" required>
-                            <option value="tunai" {{ $penyewaan->metode_pembayaran == 'tunai' ? 'selected' : '' }}>
-                                Tunai
-                            </option>
-                            <option value="transfer" {{ $penyewaan->metode_pembayaran == 'transfer' ? 'selected' : '' }}>
-                                Transfer
-                            </option>
-                            <option value="kartu_kredit" {{ $penyewaan->metode_pembayaran == 'kartu_kredit' ? 'selected' : '' }}>
-                                Kartu Kredit
-                            </option>
+                    {{-- Metode Pembayaran --}}
+                    <div class="col-md-3">
+                        <label class="form-label">Metode Bayar</label>
+                        <select name="metode_pembayaran" class="form-select" required>
+                            <option value="tunai" {{ $penyewaan->metode_pembayaran == 'tunai' ? 'selected' : '' }}>Tunai</option>
+                            <option value="transfer" {{ $penyewaan->metode_pembayaran == 'transfer' ? 'selected' : '' }}>Transfer</option>
+                            <option value="kartu_kredit" {{ $penyewaan->metode_pembayaran == 'kartu_kredit' ? 'selected' : '' }}>Kartu Kredit</option>
                         </select>
                     </div>
-                </div>
 
-                {{-- Status Pembayaran --}}
-                <div class="mb-3 row">
-                    <label class="col-md-2 col-form-label">Status Pembayaran</label>
-                    <div class="col-md-10">
-                        <select name="status_pembayaran" class="form-control" required>
-                            <option value="menunggu" {{ $penyewaan->status_pembayaran == 'menunggu' ? 'selected' : '' }}>
-                                Menunggu
-                            </option>
-                            <option value="dp" {{ $penyewaan->status_pembayaran == 'dp' ? 'selected' : '' }}>
-                                DP
-                            </option>
-                            <option value="lunas" {{ $penyewaan->status_pembayaran == 'lunas' ? 'selected' : '' }}>
-                                Lunas
-                            </option>
-                            <option value="batal" {{ $penyewaan->status_pembayaran == 'batal' ? 'selected' : '' }}>
-                                Batal
-                            </option>
+                    {{-- Status --}}
+                    <div class="col-md-3">
+                        <label class="form-label">Status Transaksi</label>
+                        <select name="status_pembayaran" class="form-select" required>
+                            <option value="menunggu" {{ $penyewaan->status_pembayaran == 'menunggu' ? 'selected' : '' }}>Menunggu</option>
+                            <option value="dp" {{ $penyewaan->status_pembayaran == 'dp' ? 'selected' : '' }}>DP</option>
+                            <option value="lunas" {{ $penyewaan->status_pembayaran == 'lunas' ? 'selected' : '' }}>Lunas</option>
+                            <option value="batal" {{ $penyewaan->status_pembayaran == 'batal' ? 'selected' : '' }}>Dibatalkan</option>
                         </select>
                     </div>
+
                 </div>
 
                 {{-- Button --}}
-                <div class="row">
-                    <div class="col-md-10 offset-md-2">
-                        <button class="btn btn-warning">
-                            <i class="mdi mdi-content-save-edit"></i> Update
-                        </button>
-                        <a href="{{ route('admin.penyewaan.show', $penyewaan->id) }}"
-                           class="btn btn-secondary">
-                            Kembali
-                        </a>
-                    </div>
+                <div class="mt-4 d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.penyewaan.show', $penyewaan->id) }}"
+                       class="btn btn-outline-secondary">
+                        Kembali
+                    </a>
+                    <button class="btn btn-success">
+                        <i class="mdi mdi-update"></i> Simpan Perubahan
+                    </button>
                 </div>
 
             </form>
@@ -184,18 +148,19 @@
     </div>
 </div>
 
+{{-- Script --}}
 <script>
-    const kendaraan = document.getElementById('kendaraan_id');
-    const durasi = document.getElementById('durasi_sewa');
-    const total = document.getElementById('total_harga');
+    const kendaraanSelect = document.getElementById('kendaraan_id');
+    const durasiInput = document.getElementById('durasi_sewa');
+    const totalInput = document.getElementById('total_harga');
 
-    function hitungTotal() {
-        const harga = kendaraan.options[kendaraan.selectedIndex]?.dataset.harga || 0;
-        total.value = 'Rp ' + new Intl.NumberFormat('id-ID')
-            .format(harga * durasi.value);
+    function updateTotalHarga() {
+        const harga = kendaraanSelect.options[kendaraanSelect.selectedIndex]?.dataset.harga || 0;
+        totalInput.value = 'Rp ' + new Intl.NumberFormat('id-ID')
+            .format(harga * durasiInput.value);
     }
 
-    kendaraan.addEventListener('change', hitungTotal);
-    durasi.addEventListener('input', hitungTotal);
+    kendaraanSelect.addEventListener('change', updateTotalHarga);
+    durasiInput.addEventListener('input', updateTotalHarga);
 </script>
 @endsection

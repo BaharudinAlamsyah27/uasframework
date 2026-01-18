@@ -7,7 +7,7 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container">
                     <a class="navbar-brand" href="index.html">
                         <span>
-                            Nabil Rent
+                            Alam Rent
                         </span>
                     </a>
 
@@ -140,10 +140,10 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    Cara Terbaik Menemukan Mobil Favorit Anda
+                    Panduan paling tepat untuk menemukan kendaraan idaman Anda.
                 </h2>
                 <p>
-                    Sudah menjadi fakta umum bahwa pembaca akan teralihkan oleh konten yang dapat dibaca.
+                    Sudah menjadi hal yang lazim bahwa perhatian pembaca mudah teralihkan oleh tampilan konten yang enak dibaca.
                 </p>
             </div>
             <div class="car_container">
@@ -156,8 +156,7 @@
                             Pilih Mobil Anda
                         </h5>
                         <p>
-                            Kami menyediakan berbagai pilihan armada yang siap menemani perjalanan Anda dengan nyaman dan
-                            aman.
+                            Kami menghadirkan beragam unit kendaraan pilihan yang siap mendukung perjalanan Anda secara aman dan penuh kenyamanan.
                         </p>
                         <a href="">
                             Baca Selengkapnya
@@ -173,7 +172,7 @@
                             Dapatkan Mobil Anda
                         </h5>
                         <p>
-                            Proses pemesanan yang mudah dan cepat tanpa ribet untuk kebutuhan transportasi Anda.
+                            Sistem pemesanan dirancang sederhana dan efisien, sehingga kebutuhan transportasi dapat terpenuhi tanpa kerumitan.
                         </p>
                         <a href="">
                             Baca Selengkapnya
@@ -189,7 +188,7 @@
                             Hubungi Dealer Kami
                         </h5>
                         <p>
-                            Tim kami siap membantu menjawab pertanyaan dan memberikan solusi sewa mobil terbaik untuk Anda.
+                          Tim profesional kami selalu siaga untuk menjawab setiap pertanyaan serta merekomendasikan solusi sewa mobil yang paling sesuai bagi Anda.
                         </p>
                         <a href="">
                             Baca Selengkapnya
@@ -208,7 +207,7 @@
                         Mobil Terbaik Kami
                     </h2>
                     <p>
-                        Pilihan armada unggulan dengan harga kompetitif untuk segala keperluan Anda.
+                       Deretan kendaraan terbaik dengan tarif bersaing untuk menunjang berbagai kebutuhan perjalanan Anda.
                     </p>
                 </div>
                 <div class="btn-box">
@@ -238,7 +237,7 @@
                     </div>
                 @empty
                     <p class="text-center">
-                        Tidak ada kendaraan tersedia saat ini.
+                        Untuk sementara, belum ada unit kendaraan yang dapat digunakan.
                     </p>
                 @endforelse
 
@@ -266,8 +265,7 @@
                             Tentang Mobil Kami
                         </h2>
                         <p>
-                            Nabil Rent berkomitmen memberikan layanan sewa mobil berkualitas dengan kondisi armada yang
-                            prima dan terawat demi kenyamanan pelanggan.
+                            Alam Rent memiliki dedikasi tinggi dalam menyediakan layanan penyewaan mobil bermutu, dengan armada yang selalu dalam kondisi optimal dan terawat guna menjamin kenyamanan setiap pelanggan.
                         </p>
                         <a href="">
                             Baca Selengkapnya
@@ -288,7 +286,7 @@
                     Mengapa Memilih Kami
                 </h2>
                 <p>
-                    Keunggulan yang membuat pelanggan setia menggunakan layanan Nabil Rent.
+                    Keunggulan yang membuat pelanggan setia menggunakan layanan Alam Rent.
                 </p>
             </div>
         </div>
@@ -386,7 +384,7 @@
                             <div class="box">
                                 <div class="detail-box">
                                     <p>
-                                        Harga sewa di Nabil Rent sangat bersahabat dibanding tempat lain. Kondisi mesin
+                                        Harga sewa di alam Rent sangat bersahabat dibanding tempat lain. Kondisi mesin
                                         mobil sangat prima untuk perjalanan jauh.
                                     </p>
                                 </div>
@@ -413,7 +411,7 @@
                                 <div class="detail-box">
                                     <p>
                                         Sangat terbantu dengan respon tim dukungan yang cepat saat saya membutuhkan bantuan
-                                        di jalan. Terima kasih Nabil Rent!
+                                        di jalan. Terima kasih Alam Rent!
                                     </p>
                                 </div>
                                 <div class="client_id">
@@ -425,7 +423,7 @@
                                     </div>
                                     <div class="name">
                                         <h6>
-                                            Budi Santoso
+                                            Putri Lestari
                                         </h6>
                                         <p>
                                             Wisatawan
@@ -500,7 +498,7 @@
                         <img src="{{ asset('landing/images/mail.png') }}" alt="">
                     </div>
                     <h6>
-                        info@nabilrent.com
+                        info@alamrent.com
                     </h6>
                 </a>
 

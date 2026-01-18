@@ -43,7 +43,7 @@
 
                         {{-- Detail --}}
                         <div class="col-md-8">
-                            <table class="table table-bordered">
+                            <table class="table table-bordere">
                                 <tr>
                                     <th width="30%">Merk</th>
                                     <td>{{ $kendaraan->merk }}</td>
@@ -61,7 +61,7 @@
                                     <td>
                                         @if ($kendaraan->status == 'tersedia')
                                             <span class="badge bg-success">Tersedia</span>
-                                        @elseif ($kendaraan->status == 'disewa')
+                                        @elseif ($kendarpaan->status == 'disewa')
                                             <span class="badge bg-warning">Disewa</span>
                                         @else
                                             <span class="badge bg-danger">Perbaikan</span>
@@ -86,7 +86,7 @@
                             <div class="mt-3">
                                 <a href="{{ route('admin.kendaraan.edit', $kendaraan->id) }}"
                                    class="btn btn-warning">
-                                    <i class="mdi mdi-pencil"></i> Edit
+                                    < class="mdi mdi-pencil"></i> Edit
                                 </a>
 
                                 <a href="{{ route('admin.kendaraan.index') }}"

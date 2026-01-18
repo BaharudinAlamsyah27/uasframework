@@ -42,5 +42,5 @@ Route::prefix('dashboard')->name('admin.')->group(function () {
     Route::put(
         'penyewaan/{id}/update-status-pembayaran',
         [PenyewaanController::class, 'updateStatusPembayaran']
-    )->name('penyewaan.update-status-pembayaran');
+    )->name('penyewaan.updaste-status-pembayaran');
 });

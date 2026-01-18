@@ -1,36 +1,40 @@
 <div class="main-menu">
-    <!-- Brand Logo -->
-    <div class="logo-box">
-        <h2>Nabil Rent</h2>
+
+    <!-- Brand -->
+    <div class="logo-box text-center py-4">
+        <h2 class="fw-bold mb-0">AlamRent</h2>
+        <small class="text-muted">Car Rental System</small>
     </div>
 
-    <!-- Menu -->
+    <!-- Navigation -->
     <div data-simplebar>
         <ul class="app-menu">
 
-            <li class="menu-title">Menu Utama</li>
+            <!-- Section -->
+            <li class="menu-title text-uppercase">Navigasi</li>
 
             {{-- Dashboard --}}
             <li class="menu-item">
                 <a href="{{ route('admin.dashboard') }}"
                    class="menu-link waves-effect {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <span class="menu-icon">
-                        <i class="bx bx-home-smile"></i>
+                        <i class="bx bx-grid-alt"></i>
                     </span>
-                    <span class="menu-text">Dashboard</span>
+                    <span class="menu-text">Overview</span>
                 </a>
             </li>
 
-            <li class="menu-title">Manajemen</li>
+            <!-- Section -->
+            <li class="menu-title text-uppercase">Data Master</li>
 
             {{-- Kendaraan --}}
             <li class="menu-item">
                 <a href="{{ route('admin.kendaraan.index') }}"
                    class="menu-link waves-effect {{ request()->routeIs('admin.kendaraan.*') ? 'active' : '' }}">
                     <span class="menu-icon">
-                        <i class="bx bx-car"></i>
+                        <i class="bx bx-car-garage"></i>
                     </span>
-                    <span class="menu-text">Kendaraan</span>
+                    <span class="menu-text">Data Kendaraan</span>
                 </a>
             </li>
 
@@ -39,9 +43,9 @@
                 <a href="{{ route('admin.penyewaan.index') }}"
                    class="menu-link waves-effect {{ request()->routeIs('admin.penyewaan.*') ? 'active' : '' }}">
                     <span class="menu-icon">
-                        <i class="bx bx-receipt"></i>
+                        <i class="bx bx-wallet"></i>
                     </span>
-                    <span class="menu-text">Penyewaan</span>
+                    <span class="menu-text">Transaksi Sewa</span>
                 </a>
             </li>
 
